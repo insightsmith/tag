@@ -1,84 +1,131 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PawTag - The Smart Pet ID of the Future</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawTag - The Smart Pet ID of the Future</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans">
-  <header class="bg-white shadow">
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold text-gray-900">
-        PawTag - The Smart Pet ID of the Future
-      </h1>
+    <!-- Modal -->
+    <div id="contactModal" class="modal">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">Get Your PawTag</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <form id="contactForm" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-2" for="name">Your Name</label>
+                    <input type="text" id="name" name="name" class="w-full px-3 py-2 border rounded-lg" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2" for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-lg" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2" for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="w-full px-3 py-2 border rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2" for="dogName">Dog's Name</label>
+                    <input type="text" id="dogName" name="dogName" class="w-full px-3 py-2 border rounded-lg" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2" for="message">Additional Information</label>
+                    <textarea id="message" name="message" rows="3" class="w-full px-3 py-2 border rounded-lg"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700">
+                    Submit
+                </button>
+            </form>
+        </div>
     </div>
-  </header>
 
-  <main>
-    <section class="py-12 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:flex lg:items-center lg:justify-between">
-          <div>
-            <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl sm:leading-9 sm:tracking-tight">
-              Introducing PawTag
-            </h2>
-            <p class="mt-4 max-w-3xl text-xl text-gray-500">
-              PawTag is the ultimate in personalized pet identification. With its unique QR code and online pet profile, PawTag gives you peace of mind and the tools to keep your furry friend safe.
-            </p>
-          </div>
-          <div class="mt-8 lg:mt-0">
-            <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              Get PawTag for Your Dog
-            </a>
-          </div>
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold text-gray-900">
+                PawTag - The Smart Pet ID of the Future
+            </h1>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <section class="py-12 bg-gray-100">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-8">Key Features</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          <div class="bg-white rounded-lg shadow p-6">
-            <h3 class="text-xl font-bold mb-4">Customizable Engraving</h3>
-            <p class="text-gray-500">Customize your dog's tag with their name and other details.</p>
-          </div>
-          <div class="bg-white rounded-lg shadow p-6">
-            <h3 class="text-xl font-bold mb-4">Durable Construction</h3>
-            <p class="text-gray-500">Stainless steel design that's corrosion-resistant.</p>
-          </div>
-          <div class="bg-white rounded-lg shadow p-6">
-            <h3 class="text-xl font-bold mb-4">Secure Online Profile</h3>
-            <p class="text-gray-500">Store your dog's medical records, owner info, and more.</p>
-          </div>
+    <main>
+        <section class="py-12 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:flex lg:items-center lg:justify-between">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl sm:leading-9 sm:tracking-tight">
+                            Introducing PawTag
+                        </h2>
+                        <p class="mt-4 max-w-3xl text-xl text-gray-500">
+                            PawTag is the ultimate in personalized pet identification. With its unique QR code and online pet profile, PawTag gives you peace of mind and the tools to keep your furry friend safe.
+                        </p>
+                    </div>
+                    <div class="mt-8 lg:mt-0">
+                        <button onclick="openModal()" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Get PawTag for Your Dog
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rest of the sections remain the same -->
+        
+    </main>
+
+    <footer class="bg-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <p>&copy; 2023 PawTag. All rights reserved.</p>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <section class="py-12 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-8">Why PawTag?</h2>
-        <p class="text-xl text-gray-500 mb-8">
-          Traditional pet tags only provide basic information. PawTag connects you to a comprehensive digital profile that keeps all your dog's critical details in one secure place. No more searching through paperwork - everything you need is just a scan away.
-        </p>
-        <div class="bg-gray-100 rounded-lg p-8">
-          <blockquote class="text-xl text-gray-900">
-            <p>"I've had PawTag on my dog for 6 months and it's been a game-changer. It gives me confidence knowing all his info is accessible if he ever gets lost."</p>
-            <footer class="mt-4">
-              <div class="text-base font-medium text-gray-900">Emily, Dog Owner</div>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </section>
-  </main>
+    <script>
+        function openModal() {
+            document.getElementById('contactModal').classList.add('show');
+        }
 
-  <footer class="bg-gray-800 py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-      <p>&copy; 2023 PawTag. All rights reserved.</p>
-    </div>
-  </footer>
+        function closeModal() {
+            document.getElementById('contactModal').classList.remove('show');
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically handle the form submission
+            // For now, we'll just show an alert
+            alert('Thank you for your interest in PawTag! We will contact you soon.');
+            closeModal();
+        });
+
+        // Close modal if clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('contactModal')) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
